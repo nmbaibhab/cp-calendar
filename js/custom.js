@@ -15,15 +15,15 @@ map1.set('leetcode.com', 'leetcode.png');
 map1.set('topcoder.com', 'topcoder.png');
 
 btn.addEventListener('click', function (e) {
-    if (sidebar.classList.contains('inactive')) {
-        sidebar.classList.remove('inactive');
-        rest.classList.add('whenBarActive');
-        rest.classList.remove('whenBarInActive');
-    } else {
-        sidebar.classList.add('inactive');
-        rest.classList.remove('whenBarActive');
-        rest.classList.add('whenBarInActive');
-    }
+	if (sidebar.classList.contains('inactive')) {
+		sidebar.classList.remove('inactive');
+		rest.classList.add('whenBarActive');
+		rest.classList.remove('whenBarInActive');
+	} else {
+		sidebar.classList.add('inactive');
+		rest.classList.remove('whenBarActive');
+		rest.classList.add('whenBarInActive');
+	}
 });
 
 var host;
@@ -59,10 +59,10 @@ var apiData;
 
 function display() {
 	var inner = ``;
-	
+
 	apiData.data.objects.forEach(function (contest) {
 		var contStart = new Date(contest.start + `.000Z`);
-		var contEnd = new Date(contest.end  + `.000Z`);
+		var contEnd = new Date(contest.end + `.000Z`);
 		if (today) {
 			if (host.includes(contest.resource) && contEnd > now && contStart < tomorrow) {
 				const minutes = (parseInt(contest.duration) / 60) % 60;
@@ -91,7 +91,7 @@ function display() {
 							<span>Duration: ${dur}</span>
 						</div>
 						<div class="right">
-							<img class="logo" src="images/${map1.get(contest.resource)}" alt="codechef">
+							<img class="logo" src="images/${map1.get(contest.resource)}" alt="image">
 						</div>
 					</a>
 					
@@ -127,7 +127,7 @@ function display() {
 							<span>Duration: ${dur}</span>
 						</div>
 						<div class="right">
-							<img class="logo" src="images/${map1.get(contest.resource)}" alt="codechef">
+							<img class="logo" src="images/${map1.get(contest.resource)}" alt="image">
 						</div>
 					</a>
 					
@@ -204,7 +204,7 @@ const TS = new Date(localStorage.getItem("timeStamp"));
 if (localStorage.getItem("contests") === null || TS < todayStart) {
 	callAPI()
 		.then(data => {
-			apiData = data;		
+			apiData = data;
 			const timeStamp = new Date();
 			localStorage.setItem("contests", JSON.stringify(data));
 			localStorage.setItem("timeStamp", timeStamp);
